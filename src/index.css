@@ -1,13 +1,411 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --golden: 1.61803398875
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  margin: 0;
+  scroll-behavior: smooth;
 }
+
+h1 {
+  font-family: 'museo_sans_900';
+  font-size: 55px;
+  line-height: 55px;
+  margin: 0;
+  padding: 0 0 calc((55px * var(--golden)) - 55px) 0;
+}
+
+h2 {
+  font-family: 'museo_sans_900';
+  font-size: 34px;
+  line-height: 34px;
+  margin: 0;
+  padding: 0 0 calc((34px * var(--golden)) - 34px) 0;
+}
+
+h3 {
+  font-family: 'museo_sans_900';
+  font-size: 21px;
+  line-height: 21px;
+  margin: 0;
+  padding: 0 0 calc((21px * var(--golden)) - 21px) 0;
+}
+
+p, strong, a, li, label, button {
+  font-family: 'museo_sans_300';
+  font-size: 21px;
+  line-height: calc(21px * var(--golden));
+  margin: 0;
+}
+
+.small-text {
+  font-size: 13px;
+  line-height: calc(13px * var(--golden));
+}
+
+a {
+  color: red;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* div {
+  border: 1px solid red;
+} */
+
+.w3 { 
+  width: 6vw;
+  min-width: 60px;
+}
+.w5 { 
+  width: 10vw;
+  min-width: 100px;
+}
+.w8 { 
+  width: 16vw;
+  min-width: 160px;
+}
+.w13 { 
+  width: 26vw;
+  min-width: 260px;
+}
+.w18 { 
+  width: 36vw;
+  min-width: 360px;
+}
+.w21 { 
+  width: 42vw;
+  min-width: 420px;
+}
+
+/* APP */
+
+main {
+  display: flex;
+  background-color: ghostwhite;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#right-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: red;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#nav {
+  position: fixed;
+  width: 6%;
+  height: 100vh;
+}
+
+#page-frame {
+  width: calc(100% - 6%);
+  margin-left: 6%;
+  padding: 0 16% 50vh 16%;
+  background-color: #1f1f1f;
+  color: ghostwhite;
+  min-height: 100vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media only screen and (max-width: 950px) {
+  #page-frame {
+    padding: 0 8%;
+  }
+}
+
+/* NAV */
+
+#nav {
+  z-index: 1000;
+}
+
+#nav #nav-info {
+  position: fixed;
+  left: calc(6% + 36px);
+  top: 50%;
+  transform: translateY(-58%)
+}
+
+#nav #nav-info p {
+  text-transform: uppercase;
+  color: #1f1f1f;
+}
+
+#nav-inner {
+  height: 100%;
+  transition-duration: 0.25s;
+  background-color: #1f1f1f;
+  color: ghostwhite;
+}
+
+#nav-inner:hover {
+  background-color: ghostwhite;
+  color: #1f1f1f;
+  cursor: pointer;
+}
+
+#nav i {
+  font-size: 21px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%)
+}
+
+#nav-content {
+  padding-top: 72px;
+  display: flex;
+  flex-direction: column;
+  width: 42vw;
+  min-width: 320px;
+}
+
+#nav-content a {
+  display: block;
+  text-align: right;
+  margin-right: 72px;
+  font-family: 'museo_sans_900';
+  font-size: 34px;
+  line-height: 34px;
+  color: #1f1f1f;
+  transition-duration: 0.25s;
+}
+
+#nav-content .active::before {
+  content: '';
+  position: absolute;
+  right: 36px;
+  top: 0;
+  width: calc(100% - 6vw - 72px);
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#nav-content .active::after {
+  z-index: 1000;
+}
+
+#nav-content a:hover {
+  color: red;
+}
+
+/* HOME */
+
+#home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 6% 0;
+}
+
+#home .row {
+  /* width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: ghostwhite;
+  padding: 36px; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: ghostwhite;
+  color: #1f1f1f;
+  margin: 0 36px 72px 36px;
+  padding: 36px;
+}
+
+/* #home .w8, #home .w18 {
+  padding: 6% 0;
+} */
+
+#home .row p {
+  padding-bottom: 6%;
+}
+
+#home .row p:last-child {
+  padding: 0;
+}
+
+/* GALLERY */
+
+#gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 6% 0;
+}
+
+#gallery .row {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: ghostwhite;
+  margin: 0 36px 72px 36px;
+  padding: 36px;
+}
+
+#gallery .row .image-wrapper {
+  width: 50%;
+}
+
+#gallery .row p {
+  display: block;
+  width: calc(50% - 36px);
+  padding-left: 36px;
+  color: #1f1f1f;
+}
+
+#gallery .image-index {
+  width: 36px;
+  position: fixed;
+  right: 0;
+  color: ghostwhite;
+}
+
+#gallery .image-index i:hover {
+  cursor: pointer;
+}
+
+/* PROJECTS */
+
+#projects {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6% 0;
+}
+
+#projects .row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: ghostwhite;
+  margin: 0 36px 72px 36px;
+  padding: 36px;
+  cursor: pointer;
+  z-index: 0;
+}
+
+#projects .row .header-wrapper {
+  width: 50%;
+}
+
+#projects h2 {
+  color: #1f1f1f;
+}
+
+#projects .row p {
+  display: block;
+  width: calc(50% - 36px);
+  padding-left: 36px;
+  color: #1f1f1f;
+}
+
+.project-page {
+  padding: 36px; 
+}
+
+.project-page h1 {
+  padding: 36px 0 36px 0; 
+}
+
+.project-page h2 {
+  padding: 36px 0; 
+}
+
+.project-page h3 {
+  padding-top: 18px; 
+}
+
+.project-page p {
+  padding-bottom: 18px; 
+}
+
+.project-page .row {
+  padding: 36px 0;
+}
+
+.project-page .row p:last-child {
+  padding: 0;
+}
+
+.project-page li a {
+  padding-right: 9px;
+}
+
+/* CONTACT */
+
+#contact {
+  padding: 36px;
+}
+
+#contact h1 {
+  padding: 36px 0 36px 0; 
+}
+
+#contact button {
+  padding: 9px 18px;
+  background-color: ghostwhite;
+  border: none;
+  box-shadow: none;
+  color: green;
+}
+
+.contact-item {
+  margin: 36px 0;
+}
+
+.contact-item input, .contact-item textarea {
+  display: block;
+  padding: 18px;
+  width: calc(100% - 36px);
+  border: none;
+
+}
+
+.contact-item input, 
+.contact-item textarea,
+.contact-item input::placeholder, 
+.contact-item textarea::placeholder {
+  font-family: 'museo_sans_300';
+  margin: 0;
+  font-size: 13px;
+  line-height: calc(13px * var(--golden));
+}
+
+#contact .error section {
+  padding: 18px 0 36px 0;
+}
+
+#contact .success {
+  padding: 72px 0;
+}
+
+#contact .success section {
+  padding: 18px 0 36px 0;
+}
+
+/* ----- ----- */
+
+@import './font.css';

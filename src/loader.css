@@ -1,0 +1,198 @@
+:root {
+  --size: 0.9em;
+
+  --one: -2em;
+  --two: -1em;
+  --three: 0em;
+  --four: 1em;
+  --five: 2em;
+
+  --color: var(--secondary);
+
+  --start: var(--five) var(--one) var(--color),
+    var(--five) var(--two) var(--color),
+    var(--five) var(--three) var(--color),
+    var(--five) var(--four) var(--color),
+    var(--five) var(--five) var(--color),
+
+    var(--four) var(--three) var(--color),
+    var(--four) var(--four) var(--color),
+    var(--four) var(--five) var(--color),
+
+    var(--three) var(--four) var(--color),
+    var(--three) var(--five) var(--color),
+
+    var(--two) var(--five) var(--color),
+    var(--one) var(--five) var(--color);
+
+
+
+  --collapse-one: var(--four) var(--three) var(--color),
+    var(--five) var(--two) var(--color),
+    var(--five) var(--three) var(--color),
+    var(--five) var(--four) var(--color),
+    var(--five) var(--five) var(--color),
+
+    var(--four) var(--four) var(--color),
+    var(--three) var(--four) var(--color),
+    var(--four) var(--five) var(--color),
+
+    var(--two) var(--four) var(--color),
+    var(--three) var(--five) var(--color),
+
+    var(--two) var(--five) var(--color),
+    var(--one) var(--five) var(--color);
+
+
+
+  --collapse-two: var(--four) var(--four) var(--color),
+    var(--four) var(--three) var(--color),
+    var(--five) var(--three) var(--color),
+    var(--five) var(--four) var(--color),
+    var(--five) var(--five) var(--color),
+
+    var(--three) var(--four) var(--color),
+    var(--two) var(--four) var(--color),
+    var(--four) var(--five) var(--color),
+
+    var(--one) var(--four) var(--color),
+    var(--three) var(--five) var(--color),
+
+    var(--two) var(--five) var(--color),
+    var(--one) var(--five) var(--color);
+
+
+  --even: var(--three) var(--four) var(--color),
+    var(--four) var(--four) var(--color),
+    var(--five) var(--three) var(--color),
+    var(--five) var(--four) var(--color),
+    var(--five) var(--five) var(--color),
+
+    var(--two) var(--four) var(--color),
+    var(--one) var(--four) var(--color),
+    var(--four) var(--five) var(--color),
+
+    var(--one) var(--three) var(--color),
+    var(--three) var(--five) var(--color),
+
+    var(--two) var(--five) var(--color),
+    var(--one) var(--five) var(--color);
+
+  --build-one: var(--two) var(--four) var(--color),
+    var(--three) var(--four) var(--color),
+    var(--four) var(--four) var(--color),
+    var(--five) var(--four) var(--color),
+    var(--five) var(--five) var(--color),
+
+    var(--two) var(--three) var(--color),
+    var(--one) var(--four) var(--color),
+    var(--four) var(--five) var(--color),
+
+    var(--one) var(--three) var(--color),
+    var(--three) var(--five) var(--color),
+
+    var(--two) var(--five) var(--color),
+    var(--one) var(--five) var(--color);
+
+  --build-two: var(--two) var(--three) var(--color),
+  var(--two) var(--four) var(--color),
+  var(--three) var(--four) var(--color),
+  var(--four) var(--four) var(--color),
+  var(--five) var(--five) var(--color),
+
+  var(--one) var(--two) var(--color),
+  var(--one) var(--four) var(--color),
+  var(--four) var(--five) var(--color),
+
+  var(--one) var(--three) var(--color),
+  var(--three) var(--five) var(--color),
+
+  var(--two) var(--five) var(--color),
+  var(--one) var(--five) var(--color);
+
+
+  --end: var(--one) var(--one) var(--color),
+  var(--two) var(--three) var(--color),
+  var(--two) var(--four) var(--color),
+  var(--three) var(--four) var(--color),
+  var(--five) var(--five) var(--color),
+
+  var(--one) var(--two) var(--color),
+  var(--one) var(--four) var(--color),
+  var(--four) var(--five) var(--color),
+
+  var(--one) var(--three) var(--color),
+  var(--three) var(--five) var(--color),
+
+  var(--two) var(--five) var(--color),
+  var(--one) var(--five) var(--color);
+
+
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+
+.loader-content {
+
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--accent);
+  border-radius: var(--size);
+
+  box-shadow: var(--start);
+  margin: auto;
+
+  -webkit-animation: loader 0.5s;
+  animation: loader 0.5s;
+  animation-direction: alternate;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+
+}
+
+
+
+@keyframes loader {
+
+  0% {
+    box-shadow: var(--start);
+  }
+
+  16.66% {
+    box-shadow: var(--collapse-one);
+  }
+
+  33.33% {
+    box-shadow: var(--collapse-two);
+  }
+
+  50% {
+    box-shadow: var(--even)
+  }
+
+  66.66% {
+    box-shadow: var(--build-one)
+  }
+
+  83.33% {
+    box-shadow: var(--build-two)
+  }
+
+  100% {
+    box-shadow: var(--end)
+  }
+
+}

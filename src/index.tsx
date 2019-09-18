@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
+import axios from 'axios';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const UseFetch = (url: string) => {
+  
+  let data = axios.get(`https://joeboylson-api.herokuapp.com${url}`).then(response => {
+    return response.data
+  }).then(data => {
+    return(data);
+  });
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+  return data;
+};
+
+ReactDOM.render(<p>Loading . . .</p>, document.getElementById('root'))
+
+UseFetch(`/api/gallery`)
+.then(images => {
+  console.log(images)
+  ReactDOM.render(<App images={images}/>, document.getElementById('root'));
+})
+
 serviceWorker.unregister();
